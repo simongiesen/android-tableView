@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,18 +29,19 @@ public class TableView extends RecyclerView {
 
     private int tv_radius;
 
+    private TableViewAdapter tableViewAdapter;
+
     public TableView(Context context) {
         super(context);
-        setOverScrollMode(OVER_SCROLL_NEVER);
+        //setOverScrollMode(OVER_SCROLL_NEVER);
+
+        Log.e("TABLEVIEW", "INIT1");
     }
 
     public TableView(Context context, AttributeSet attrs) {
         super(context, attrs);
-    }
 
-
-    public TableView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
+        Log.e("TABLEVIEW", "INIT2");
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TableView);
 
@@ -53,14 +55,25 @@ public class TableView extends RecyclerView {
 
         headersOnTop = a.getBoolean(R.styleable.TableView_tv_headersOnTop, true);
 
-        setAdapter(new TableViewAdapter(getContext(), this));
+        tableViewAdapter = new TableViewAdapter(getContext(), this);
 
-        a.recycle();
+        setAdapter(tableViewAdapter);
+
+        //a.recycle();
+    }
+
+
+    public TableView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+
+        Log.e("TABLEVIEW", "INIT3");
     }
 
     public void setItems(HashMap<Cell, List<Cell>> tabs) {
 
         items = tabs;
+
+        tableViewAdapter.setItems(this);
 
         setLayoutManager(new GridLayoutManager(getContext(), items.size()));
     }

@@ -2,6 +2,7 @@ package com.chargemap_beta.android.tableview.library;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,18 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
         data = new ArrayList<>();
 
         headsOnTop = tableView.getHeadersOnTop();
+        Log.e("TABLEVIEW", "Items -> " + count);
+    }
+
+    @Override
+    public int getItemCount() {
+        Log.e("TABLEVIEW", "Items -> " + count);
+        return count;
+    }
+
+    public void setItems(TableView tableview) {
+
+        items = tableview.getItems();
 
         count = items.size();
         for (Map.Entry<Cell, List<Cell>> entry : items.entrySet()) {
@@ -48,14 +61,10 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
     }
 
     @Override
-    public int getItemCount() {
-
-        return count;
-    }
-
-    @Override
     public void onBindViewHolder(VH vh, int position) {
         Cell item = null;
+
+        Log.e("TABLEVIEW", "BIND -> " + count);
 
         if (headsOnTop) {
             // Headers are at the top of the table
@@ -108,7 +117,6 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
                 }
             }
         }
-
 
         if (item != null) {
             vh.title.setText(item.getTitle());

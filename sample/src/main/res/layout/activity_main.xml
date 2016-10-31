@@ -12,7 +12,7 @@
         app:tv_data_borders_color="@color/md_grey_500"
         app:tv_header_background_color="@color/md_grey_300"
         app:tv_header_borders_color="@color/md_grey_500"
-        app:tv_headersOnTop="false"
-        app:tv_radius="0" />
+        app:tv_headersOnTop="true"
+        app:tv_padding="8" />
 
 </RelativeLayout>

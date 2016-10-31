@@ -5,7 +5,7 @@ Android-Tableview is a simple library developed to provide a ncie looking table 
 [![Release](https://jitpack.io/v/ChargeMap/android-tableview.svg)](https://jitpack.io/v/ChargeMap/android-tableview.svg)
 
 ---
-![](https://github.com/ChargeMap/android-tableview/blob/master/art/demo.gif)
+<img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo1.png" width="300"/><img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo2.png" width="300"/>
 
 ## Gradle Dependency
 
@@ -40,60 +40,95 @@ dependencies {
 
 ```xml
     <com.chargemap_beta.android.tableview.library.TableView
-        android:id="@+id/bottomBar"
+        android:id="@+id/tableview"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_height="wrap_content"
+        app:tv_data_background_color="@color/md_white_1000" // Background color for data cells
+        app:tv_data_borders_color="@color/md_grey_500" // Borders color for data cells
+        app:tv_header_background_color="@color/md_grey_300" // Background color for header cells
+        app:tv_header_borders_color="@color/md_grey_500" // Borders color for header cells
+        app:tv_headersOnTop="false" // Table view header is the first row ? If false, headers are shown as the first column
+        app:tv_padding="8" /> // padding 
 ```
 
-### 2 -  Customise its behavior
+### 2 -  Add the data
 
+#### Tableview with headers on the left
 
 ```java
-    bottomBar.setColors(
-    	R.color.colorPrimary, // Color used for the active tab text
-    	R.color.md_grey_500 // Color used for the inactive tabs text
-    ); 
+    List<Cell> column1 = new ArrayList<>(); // Add headers as the first column
+    column1.add(new Cell("Header 1"));
+    column1.add(new Cell("Header 1"));
+    column1.add(new Cell("Header 1"));
+    column1.add(new Cell("Header 1"));
+    column1.add(new Cell("Header 1"));
+    column1.add(new Cell("Header 1"));
+
+    List<Cell> column2 = new ArrayList<>(); // Add data after headers
+    column2.add(new Cell("Data11"));
+    column2.add(new Cell("Data12"));
+    column2.add(new Cell("Data13"));
+    column2.add(new Cell("Data14"));
+    column2.add(new Cell("Data15"));
+    column2.add(new Cell("Data16"));
+
+    List<Cell> column3 = new ArrayList<>();
+    column3.add(new Cell("Data21"));
+    column3.add(new Cell("Data22"));
+    column3.add(new Cell("Data23"));
+    column3.add(new Cell("Data24"));
+    column3.add(new Cell("Data25"));
+    column3.add(new Cell("Data26"));
+
+    List<List<Cell>> columns = new ArrayList<>();
+    columns.add(column1);
+    columns.add(column2);
+    columns.add(column3);
+
+    tableView.setItems(columns);
 ```
 
-### 3 -  Add the tabs
+#### Tableview with headers on the top
 
 ```java
-    ArrayList<BottombarItem> items = new ArrayList<BottombarItem>(){{
-            add(new BottombarItem()
-                    .setId(0) // Caution - Needs to be unique
-                    .setTitle("Charge") // Specify tab title
-                    .setActiveIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_check_dark)) // Active icon drawable
-                    .setActiveIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_check_dark_disabled)) // Inactive icon drawable
-                    .setClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                        	// Place your code to run when the tab is getting active
-                            Toast.makeText(getContext(), "Item 1", Toast.LENGTH_LONG).show();
-                        }
-                    })
-            );
+    List<Cell> column1 = new ArrayList<>();
+    column1.add(new Cell("Header 1"));
+    column1.add(new Cell("Data11"));
+    column1.add(new Cell("Data12"));
+    column1.add(new Cell("Data13"));
+    column1.add(new Cell("Data14"));
+    column1.add(new Cell("Data15"));
+    column1.add(new Cell("Data16"));
 
-            add(new BottombarItem()
-                    .setId(1)
-                    .setTitle("Map")
-                    .setActiveIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_check_dark))
-                    .setActiveIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_check_dark_disabled))
-                    .setClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Toast.makeText(getContext(), "Item 2", Toast.LENGTH_LONG).show();
-                        }
-                    })
-            );
-        }};
+    List<Cell> column2 = new ArrayList<>();
+    column2.add(new Cell("Header 2"));
+    column2.add(new Cell("Data21"));
+    column2.add(new Cell("Data22"));
+    column2.add(new Cell("Data23"));
+    column2.add(new Cell("Data24"));
+    column2.add(new Cell("Data25"));
+    column2.add(new Cell("Data26"));
+
+    List<Cell> column3 = new ArrayList<>();
+    column3.add(new Cell("Header 3"));
+    column3.add(new Cell("Data31"));
+    column3.add(new Cell("Data32"));
+    column3.add(new Cell("Data33"));
+    column3.add(new Cell("Data34"));
+    column3.add(new Cell("Data35"));
+    column3.add(new Cell("Data36"));
+
+    List<List<Cell>> columns = new ArrayList<>();
+    columns.add(column1);
+    columns.add(column2);
+    columns.add(column3);
+
+    tableView.setItems(columns);
 ```
 
-### 4 -  Set the bar items
+### 3 - Finished !
 
-```java
-   	bottomBar.setItems(items);
-```
+There is no sep 3, you are ready to go :)
 
 ## ChargeMap ( [http://chargemap.com](https://chargemap.com) )
 

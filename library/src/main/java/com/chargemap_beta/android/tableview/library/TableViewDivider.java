@@ -28,13 +28,14 @@ public class TableViewDivider extends RecyclerView.ItemDecoration {
         View container = view.findViewById(R.id.container);
         TextView title = (TextView) view.findViewById(R.id.title);
 
-        int padding = (int) convertDpToPixel(1);
+        int border = (int) convertDpToPixel(1);
+        int padding = (int) convertDpToPixel(tableView.tv_padding);
 
         container.setPadding(
-                column != 0 ? 0 : padding,
-                position >= tableView.columnCount ? 0 : padding,
-                padding,
-                padding
+                column != 0 ? 0 : border,
+                position >= tableView.columnCount ? 0 : border,
+                border,
+                border
         );
 
         if (tableView.tv_headersOnTop) {
@@ -50,6 +51,8 @@ public class TableViewDivider extends RecyclerView.ItemDecoration {
             container.setBackgroundColor(tableView.tv_data_borders_color);
             title.setBackgroundColor(tableView.tv_data_background_color);
         }
+
+        title.setPadding(padding, padding, padding, padding);
     }
 
     public static float convertDpToPixel(float dp) {

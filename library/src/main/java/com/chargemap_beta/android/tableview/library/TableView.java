@@ -25,6 +25,8 @@ public class TableView extends RecyclerView {
     public int tv_data_background_color;
 
     public int tv_radius;
+    
+    public int tv_padding;
 
     public int count;
 
@@ -55,7 +57,9 @@ public class TableView extends RecyclerView {
         tv_data_borders_color = a.getColor(R.styleable.TableView_tv_data_borders_color, ContextCompat.getColor(context, R.color.md_grey_500));
         tv_data_background_color = a.getColor(R.styleable.TableView_tv_data_background_color, ContextCompat.getColor(context, R.color.md_white_1000));
 
-        tv_radius = a.getColor(R.styleable.TableView_tv_radius, 0);
+        tv_radius = a.getInteger(R.styleable.TableView_tv_radius, 0);
+
+        tv_padding = a.getInteger(R.styleable.TableView_tv_padding, 0);
 
         tv_headersOnTop = a.getBoolean(R.styleable.TableView_tv_headersOnTop, true);
 

@@ -10,6 +10,10 @@ public class Cell {
 
     private String title;
 
+    public Cell(String title) {
+        this.title = title;
+    }
+
     private View.OnClickListener clickListener;
 
     public String getTitle() {

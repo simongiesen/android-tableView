@@ -18,7 +18,7 @@ public class TableView extends RecyclerView {
 
     private List<List<Cell>> cells;
 
-    private Boolean headersOnTop;
+    private Boolean tv_headersOnTop;
 
     private int tv_header_borders_color;
     private int tv_header_background_color;
@@ -55,7 +55,7 @@ public class TableView extends RecyclerView {
 
         tv_radius = a.getColor(R.styleable.TableView_tv_radius, 0);
 
-        headersOnTop = a.getBoolean(R.styleable.TableView_tv_headersOnTop, true);
+        tv_headersOnTop = a.getBoolean(R.styleable.TableView_tv_headersOnTop, true);
 
         tableViewAdapter = new TableViewAdapter(getContext(), this);
 
@@ -77,7 +77,11 @@ public class TableView extends RecyclerView {
 
         tableViewAdapter.setItems(this);
 
-        setLayoutManager(new GridLayoutManager(getContext(), cells.size()));
+        if(tv_headersOnTop){
+            setLayoutManager(new GridLayoutManager(getContext(), cells.size()));
+        }else{
+            setLayoutManager(new GridLayoutManager(getContext(), cells.size() + 1));
+        }
     }
 
     public List<List<Cell>> getItems() {
@@ -85,7 +89,7 @@ public class TableView extends RecyclerView {
     }
 
     public Boolean getHeadersOnTop() {
-        return headersOnTop;
+        return tv_headersOnTop;
     }
 
 }

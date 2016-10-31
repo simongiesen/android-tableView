@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         TableView tableView = (TableView) findViewById(R.id.tableview);
 
-        List<Cell> column1 = new ArrayList<>();
+        /*List<Cell> column1 = new ArrayList<>();
         column1.add(new Cell().setTitle("Header 1"));
         column1.add(new Cell().setTitle("Data11"));
         column1.add(new Cell().setTitle("Data12"));
@@ -38,6 +38,35 @@ public class MainActivity extends AppCompatActivity {
 
         List<Cell> column3 = new ArrayList<>();
         column3.add(new Cell().setTitle("Header 3"));
+        column3.add(new Cell().setTitle("Data31"));
+        column3.add(new Cell().setTitle("Data32"));
+        column3.add(new Cell().setTitle("Data33"));
+        column3.add(new Cell().setTitle("Data34"));
+        column3.add(new Cell().setTitle("Data35"));
+        column3.add(new Cell().setTitle("Data36"));
+
+        List<List<Cell>> columns = new ArrayList<>();
+        columns.add(column1);
+        columns.add(column2);
+        columns.add(column3);*/
+
+        List<Cell> column1 = new ArrayList<>();
+        column1.add(new Cell().setTitle("Header 1"));
+        column1.add(new Cell().setTitle("Header 2"));
+        column1.add(new Cell().setTitle("Header 3"));
+        column1.add(new Cell().setTitle("Header 4"));
+        column1.add(new Cell().setTitle("Header 5"));
+        column1.add(new Cell().setTitle("Header 6"));
+
+        List<Cell> column2 = new ArrayList<>();
+        column2.add(new Cell().setTitle("Data21"));
+        column2.add(new Cell().setTitle("Data22"));
+        column2.add(new Cell().setTitle("Data23"));
+        column2.add(new Cell().setTitle("Data24"));
+        column2.add(new Cell().setTitle("Data25"));
+        column2.add(new Cell().setTitle("Data26"));
+
+        List<Cell> column3 = new ArrayList<>();
         column3.add(new Cell().setTitle("Data31"));
         column3.add(new Cell().setTitle("Data32"));
         column3.add(new Cell().setTitle("Data33"));

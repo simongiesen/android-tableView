@@ -3,6 +3,7 @@ package com.chargemap_beta.android.tableview.library;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,20 +49,32 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
 
         items = tableview.getItems();
 
-        count = 0;
-        for (List<Cell> column : items) {
-            count += column.size();
+        if (headsOnTop) {
+            count = 0;
+            for (List<Cell> column : items) {
+                count += column.size();
 
-            headers.add(column.get(0));
-            column.remove(0);
+                headers.add(column.get(0));
+                column.remove(0);
 
-            data.add(column);
+                data.add(column);
+            }
+        } else {
+            count = items.get(0).size();
+
+            headers.addAll(items.get(0));
+            items.remove(0);
+
+            for (List<Cell> column : items) {
+                count += column.size();
+                data.add(column);
+            }
         }
     }
 
     @Override
     public void onBindViewHolder(VH vh, int position) {
-        Cell item = null;
+        Cell item;
 
         if (headsOnTop) {
             // Headers are at the top of the table
@@ -114,10 +127,62 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
                     vh.title.setBackgroundResource(R.drawable.table_borders_top);
                 }
             }
+        } else {
+            // Headers are at the left of the table
+
+            // Manual modulo to get the iteration count
+            int index = 0;
+            while (position > data.size()) {
+                index++;
+
+                position = position - (data.size() + 1);
+            }
+
+            if (position == 0) {
+                // Cell is header
+
+                item = headers.get(index);
+
+                if (index == 0) {
+
+                    // Top left cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_header);
+
+                } else if (index == headers.size() - 1) {
+                    // Bottom left cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_header_top);
+
+                } else {
+                    // Middle cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_header_top);
+                }
+
+            } else {
+
+                // Cell is data
+
+                List<Cell> column = data.get(position - 1);
+
+                item = column.get(index);
+
+                if (index == 0) {
+                    // Top right cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_left);
+
+                } else if (index == column.size() - 1) {
+                    // Bottom right cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_left_top);
+
+                } else {
+                    // Middle cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_left_top);
+                }
+            }
         }
 
         if (item != null) {
             vh.title.setText(item.getTitle());
+            vh.title.setGravity(Gravity.CENTER);
         }
     }
 

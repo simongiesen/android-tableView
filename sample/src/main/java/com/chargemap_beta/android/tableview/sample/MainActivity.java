@@ -7,7 +7,6 @@ import com.chargemap_beta.android.tableview.library.Cell;
 import com.chargemap_beta.android.tableview.library.TableView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,9 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         TableView tableView = (TableView) findViewById(R.id.tableview);
 
-        HashMap<Cell, List<Cell>> cellListHashMap = new HashMap<>();
-
         List<Cell> column1 = new ArrayList<>();
+        column1.add(new Cell().setTitle("Header 1"));
         column1.add(new Cell().setTitle("Data11"));
         column1.add(new Cell().setTitle("Data12"));
         column1.add(new Cell().setTitle("Data13"));
@@ -29,12 +27,8 @@ public class MainActivity extends AppCompatActivity {
         column1.add(new Cell().setTitle("Data15"));
         column1.add(new Cell().setTitle("Data16"));
 
-        cellListHashMap.put(
-                new Cell().setTitle("Header1"),
-                column1
-        );
-
         List<Cell> column2 = new ArrayList<>();
+        column2.add(new Cell().setTitle("Header 2"));
         column2.add(new Cell().setTitle("Data21"));
         column2.add(new Cell().setTitle("Data22"));
         column2.add(new Cell().setTitle("Data23"));
@@ -42,12 +36,8 @@ public class MainActivity extends AppCompatActivity {
         column2.add(new Cell().setTitle("Data25"));
         column2.add(new Cell().setTitle("Data26"));
 
-        cellListHashMap.put(
-                new Cell().setTitle("Header2"),
-                column2
-        );
-
         List<Cell> column3 = new ArrayList<>();
+        column3.add(new Cell().setTitle("Header 3"));
         column3.add(new Cell().setTitle("Data31"));
         column3.add(new Cell().setTitle("Data32"));
         column3.add(new Cell().setTitle("Data33"));
@@ -55,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
         column3.add(new Cell().setTitle("Data35"));
         column3.add(new Cell().setTitle("Data36"));
 
-        cellListHashMap.put(
-                new Cell().setTitle("Header3"),
-                column3
-        );
+        List<List<Cell>> columns = new ArrayList<>();
+        columns.add(column1);
+        columns.add(column2);
+        columns.add(column3);
 
-        tableView.setItems(cellListHashMap);
+        tableView.setItems(columns);
     }
 }

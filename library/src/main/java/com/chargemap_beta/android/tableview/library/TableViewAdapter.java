@@ -11,9 +11,7 @@ import android.widget.TextView;
 import com.chargemap_beta.android.tableview.library.callbacks.ClickListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by r4phab on 02/10/2016.
@@ -21,15 +19,15 @@ import java.util.Map;
 
 public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> {
 
-    private HashMap<Cell, List<Cell>> items;
+    private List<List<Cell>> items;
 
     private List<Cell> headers;
 
     private List<List<Cell>> data;
 
-    private int count;
-
     private boolean headsOnTop;
+
+    private int count;
 
     public TableViewAdapter(Context context, TableView tableView) {
         this.items = tableView.getItems();
@@ -42,6 +40,7 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
 
     @Override
     public int getItemCount() {
+        Log.e("TABLEVIEW", "COUNT -> " + count);
         return count;
     }
 
@@ -49,12 +48,14 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
 
         items = tableview.getItems();
 
-        count = items.size();
-        for (Map.Entry<Cell, List<Cell>> entry : items.entrySet()) {
-            headers.add(entry.getKey());
-            data.add(entry.getValue());
+        count = 0;
+        for (List<Cell> column : items) {
+            count += column.size();
 
-            count += entry.getValue().size();
+            headers.add(column.get(0));
+            column.remove(0);
+
+            data.add(column);
         }
     }
 
@@ -65,14 +66,12 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
         if (headsOnTop) {
             // Headers are at the top of the table
 
-            if (position < items.size()) {
+            if (position < headers.size()) {
                 // Cell is header
 
                 item = headers.get(position);
 
                 if (position == 0) {
-
-                    Log.e("TABLEVIEW", "TOP LEFT -> " + item.getTitle());
 
                     // Top left cell
                     vh.title.setBackgroundResource(R.drawable.table_borders_header_right);

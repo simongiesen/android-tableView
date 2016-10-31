@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ import java.util.List;
 
 public class TableView extends RecyclerView {
 
-    private HashMap<Cell, List<Cell>> items;
+    private List<List<Cell>> cells;
 
     private Boolean headersOnTop;
 
@@ -33,7 +32,10 @@ public class TableView extends RecyclerView {
 
     public TableView(Context context) {
         super(context);
-        //setOverScrollMode(OVER_SCROLL_NEVER);
+
+        setOverScrollMode(OVER_SCROLL_NEVER);
+
+        setHasFixedSize(true);
 
         Log.e("TABLEVIEW", "INIT1");
     }
@@ -69,17 +71,17 @@ public class TableView extends RecyclerView {
         Log.e("TABLEVIEW", "INIT3");
     }
 
-    public void setItems(HashMap<Cell, List<Cell>> tabs) {
+    public void setItems(List<List<Cell>> tabs) {
 
-        items = tabs;
+        cells = tabs;
 
         tableViewAdapter.setItems(this);
 
-        setLayoutManager(new GridLayoutManager(getContext(), items.size()));
+        setLayoutManager(new GridLayoutManager(getContext(), cells.size()));
     }
 
-    public HashMap<Cell, List<Cell>> getItems() {
-        return items;
+    public List<List<Cell>> getItems() {
+        return cells;
     }
 
     public Boolean getHeadersOnTop() {

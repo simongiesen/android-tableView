@@ -3,7 +3,6 @@ package com.chargemap_beta.android.tableview.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
@@ -18,6 +17,8 @@ public class TableView extends RecyclerView {
 
     public Boolean tv_headersOnTop;
 
+    public Boolean tv_scrollingEnabled;
+
     public int tv_header_borders_color;
     public int tv_header_background_color;
 
@@ -25,7 +26,7 @@ public class TableView extends RecyclerView {
     public int tv_data_background_color;
 
     public int tv_radius;
-    
+
     public int tv_padding;
 
     public int count;
@@ -62,6 +63,8 @@ public class TableView extends RecyclerView {
         tv_padding = a.getInteger(R.styleable.TableView_tv_padding, 0);
 
         tv_headersOnTop = a.getBoolean(R.styleable.TableView_tv_headersOnTop, true);
+
+        tv_scrollingEnabled = a.getBoolean(R.styleable.TableView_tv_scrollingEnabled, true);
 
         tableViewAdapter = new TableViewAdapter(getContext(), this);
 
@@ -110,7 +113,7 @@ public class TableView extends RecyclerView {
 
         }
 
-        setLayoutManager(new GridLayoutManager(getContext(), columnCount));
+        setLayoutManager(new CustomGridLayoutManager(getContext(), columnCount, tv_scrollingEnabled));
 
         addItemDecoration(new TableViewDivider(this));
     }

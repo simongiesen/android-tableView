@@ -13,6 +13,7 @@
         app:tv_header_background_color="@color/md_grey_300"
         app:tv_header_borders_color="@color/md_grey_500"
         app:tv_headersOnTop="true"
+        app:tv_scrollingEnabled="false"
         app:tv_padding="8" />
 
 </RelativeLayout>

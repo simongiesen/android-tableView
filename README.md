@@ -31,7 +31,7 @@ Add this to your specific module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.ChargeMap:android-tableview:1.0'
+	compile 'com.github.ChargeMap:android-tableview:1.1'
 }
 ```
 
@@ -45,12 +45,13 @@ dependencies {
         android:id="@+id/tableview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tv_data_background_color="@color/md_white_1000" // Background color for data cells
-        app:tv_data_borders_color="@color/md_grey_500" // Borders color for data cells
-        app:tv_header_background_color="@color/md_grey_300" // Background color for header cells
-        app:tv_header_borders_color="@color/md_grey_500" // Borders color for header cells
-        app:tv_headersOnTop="false" // Table view header is the first row ? If false, headers are shown as the first column
-        app:tv_padding="8" /> // padding 
+        app:tv_data_background_color="@color/md_white_1000" <!-- Background color for data cells -->
+        app:tv_data_borders_color="@color/md_grey_500" <!--  Borders color for data cells -->
+        app:tv_header_background_color="@color/md_grey_300" <!--  Background color for header cells -->
+        app:tv_header_borders_color="@color/md_grey_500" <!--  Borders color for header cells -->
+        app:tv_headersOnTop="false" <!--  Table view header is the first row ? If false, headers are shown as the first column -->
+        app:tv_scrollingEnabled="false" <!-- Scrolling ? -->
+        app:tv_padding="8" /> <!--  padding -->
 ```
 
 ### 2 -  Add the data

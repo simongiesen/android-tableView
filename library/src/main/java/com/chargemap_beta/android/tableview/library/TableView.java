@@ -6,8 +6,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,17 +16,23 @@ import java.util.List;
 
 public class TableView extends RecyclerView {
 
-    private List<List<Cell>> cells;
+    public Boolean tv_headersOnTop;
 
-    private Boolean tv_headersOnTop;
+    public int tv_header_borders_color;
+    public int tv_header_background_color;
 
-    private int tv_header_borders_color;
-    private int tv_header_background_color;
+    public int tv_data_borders_color;
+    public int tv_data_background_color;
 
-    private int tv_data_borders_color;
-    private int tv_data_background_color;
+    public int tv_radius;
 
-    private int tv_radius;
+    public int count;
+
+    public int columnCount;
+
+    public List<Cell> headers;
+
+    public List<List<Cell>> data;
 
     private TableViewAdapter tableViewAdapter;
 
@@ -36,14 +42,10 @@ public class TableView extends RecyclerView {
         setOverScrollMode(OVER_SCROLL_NEVER);
 
         setHasFixedSize(true);
-
-        Log.e("TABLEVIEW", "INIT1");
     }
 
     public TableView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        Log.e("TABLEVIEW", "INIT2");
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TableView);
 
@@ -61,35 +63,51 @@ public class TableView extends RecyclerView {
 
         setAdapter(tableViewAdapter);
 
-        //a.recycle();
+        a.recycle();
     }
 
 
     public TableView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
-        Log.e("TABLEVIEW", "INIT3");
     }
 
-    public void setItems(List<List<Cell>> tabs) {
+    public void setItems(List<List<Cell>> items) {
 
-        cells = tabs;
+        headers = new ArrayList<>();
+        data = new ArrayList<>();
 
         tableViewAdapter.setItems(this);
 
-        if(tv_headersOnTop){
-            setLayoutManager(new GridLayoutManager(getContext(), cells.size()));
-        }else{
-            setLayoutManager(new GridLayoutManager(getContext(), cells.size() + 1));
+        if (tv_headersOnTop) {
+            columnCount = items.size();
+
+            count = 0;
+            for (List<Cell> column : items) {
+                count += column.size();
+
+                headers.add(column.get(0));
+                column.remove(0);
+
+                data.add(column);
+            }
+
+        } else {
+            columnCount = items.size();
+
+            count = items.get(0).size();
+
+            headers.addAll(items.get(0));
+            items.remove(0);
+
+            for (List<Cell> column : items) {
+                count += column.size();
+                data.add(column);
+            }
+
         }
-    }
 
-    public List<List<Cell>> getItems() {
-        return cells;
-    }
+        setLayoutManager(new GridLayoutManager(getContext(), columnCount));
 
-    public Boolean getHeadersOnTop() {
-        return tv_headersOnTop;
+        addItemDecoration(new TableViewDivider(this));
     }
-
 }

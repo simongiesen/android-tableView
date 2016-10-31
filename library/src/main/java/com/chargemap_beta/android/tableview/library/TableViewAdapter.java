@@ -38,12 +38,10 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
         data = new ArrayList<>();
 
         headsOnTop = tableView.getHeadersOnTop();
-        Log.e("TABLEVIEW", "Items -> " + count);
     }
 
     @Override
     public int getItemCount() {
-        Log.e("TABLEVIEW", "Items -> " + count);
         return count;
     }
 
@@ -64,8 +62,6 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
     public void onBindViewHolder(VH vh, int position) {
         Cell item = null;
 
-        Log.e("TABLEVIEW", "BIND -> " + count);
-
         if (headsOnTop) {
             // Headers are at the top of the table
 
@@ -75,16 +71,19 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
                 item = headers.get(position);
 
                 if (position == 0) {
+
+                    Log.e("TABLEVIEW", "TOP LEFT -> " + item.getTitle());
+
                     // Top left cell
                     vh.title.setBackgroundResource(R.drawable.table_borders_header_right);
 
                 } else if (position == headers.size() - 1) {
-                    // Middle cell
-                    vh.title.setBackgroundResource(R.drawable.table_borders_header_right);
-
-                } else {
                     // Top right cell
                     vh.title.setBackgroundResource(R.drawable.table_borders_header_left);
+
+                } else {
+                    // Middle cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_header);
                 }
 
             } else {
@@ -108,12 +107,12 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.VH> 
                     vh.title.setBackgroundResource(R.drawable.table_borders_right_top);
 
                 } else if (position == headers.size() - 1) {
-                    // Middle cell
-                    vh.title.setBackgroundResource(R.drawable.table_borders_right_top);
-
-                } else {
                     // Right cell
                     vh.title.setBackgroundResource(R.drawable.table_borders_left_top);
+
+                } else {
+                    // Middle cell
+                    vh.title.setBackgroundResource(R.drawable.table_borders_top);
                 }
             }
         }

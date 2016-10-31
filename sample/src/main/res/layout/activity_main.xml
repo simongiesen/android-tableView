@@ -7,7 +7,7 @@
     <com.chargemap_beta.android.tableview.library.TableView
         android:id="@+id/tableview"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         app:tv_data_background_color="@color/md_white_1000"
         app:tv_data_borders_color="@color/md_grey_500"
         app:tv_header_background_color="@color/md_grey_300"

@@ -5,7 +5,9 @@ Android-Tableview is a simple library developed to provide a ncie looking table 
 [![Release](https://jitpack.io/v/ChargeMap/android-tableview.svg)](https://jitpack.io/v/ChargeMap/android-tableview.svg)
 
 ---
-<img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo1.png" width="300"/><img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo2.png" width="300"/>
+<img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo1.png" width="300"/> 
+
+<img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo2.png" width="300"/>
 
 ## Gradle Dependency
 

@@ -66,6 +66,11 @@ public class TableView extends RecyclerView {
 
         tv_scrollingEnabled = a.getBoolean(R.styleable.TableView_tv_scrollingEnabled, true);
 
+        if (!tv_scrollingEnabled) {
+            setClickable(false);
+            setFocusable(false);
+        }
+
         tableViewAdapter = new TableViewAdapter(getContext(), this);
 
         setAdapter(tableViewAdapter);

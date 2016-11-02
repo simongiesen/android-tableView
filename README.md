@@ -26,12 +26,15 @@ allprojects {
 
 ### Dependency
 
+[![Release](https://jitpack.io/v/ChargeMap/android-tableview.svg)](https://jitpack.io/v/ChargeMap/android-tableview.svg)
+
 Add this to your specific module `build.gradle` file:
 
 ```gradle
 dependencies {
 	...
-	compile 'com.github.ChargeMap:android-tableview:1.1'
+	compile 'com.github.ChargeMap:android-tableview:LAST_RELEASE'
+	// See the badge to get the current release version number
 }
 ```
 

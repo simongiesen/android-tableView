@@ -1,13 +1,13 @@
-# Android-tableview
+# Android-tableView
 
-Android-Tableview is a simple library developed to provide a ncie looking table inside your layouts.
+Android-Tableview is a simple library developed to provide a nice looking table inside your layouts.
 
-[![Release](https://jitpack.io/v/ChargeMap/android-tableview.svg)](https://jitpack.io/v/ChargeMap/android-tableview.svg)
+[![Release](https://jitpack.io/v/ChargeMap/android-tableView.svg)](https://jitpack.io/v/ChargeMap/android-tableView.svg)
 
 ---
-<img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo1.png" width="300"/> 
+<img src="https://github.com/ChargeMap/android-tableView/blob/master/art/demo1.png" width="300"/> 
 
-<img src="https://github.com/ChargeMap/android-tableview/blob/master/art/demo2.png" width="300"/>
+<img src="https://github.com/ChargeMap/android-tableView/blob/master/art/demo2.png" width="300"/>
 
 ## Gradle Dependency
 
@@ -26,7 +26,7 @@ allprojects {
 
 ### Dependency
 
-[![Release](https://jitpack.io/v/ChargeMap/android-tableview.svg)](https://jitpack.io/v/ChargeMap/android-tableview.svg)
+[![Release](https://jitpack.io/v/ChargeMap/android-tableView.svg)](https://jitpack.io/v/ChargeMap/android-tableView.svg)
 
 Add this to your specific module `build.gradle` file:
 
@@ -44,7 +44,7 @@ dependencies {
 
 
 ```xml
-    <com.chargemap_beta.android.tableview.library.TableView
+    <com.chargemap_beta.android.tableView.library.TableView
         android:id="@+id/tableview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

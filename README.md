@@ -33,7 +33,7 @@ Add this to your specific module `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.ChargeMap:android-tableview:LAST_RELEASE'
+	compile 'com.github.ChargeMap:android-tableView:LAST_RELEASE'
 	// See the badge to get the current release version number
 }
 ```

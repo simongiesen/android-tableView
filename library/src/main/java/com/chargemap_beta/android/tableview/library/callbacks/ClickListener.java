@@ -1,4 +1,4 @@
-package com.chargemap_beta.android.tableview.library.callbacks;
+package com.chargemap_beta.android.tableView.library.callbacks;
 
 import android.view.View;
 

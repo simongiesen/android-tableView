@@ -1,4 +1,4 @@
-package com.chargemap_beta.android.tableview.library;
+package com.chargemap_beta.android.tableView.library;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.chargemap_beta.android.tableview.library.callbacks.ClickListener;
+import com.chargemap_beta.android.tableView.library.callbacks.ClickListener;
 
 import java.util.List;
 

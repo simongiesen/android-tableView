@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.chargemap_beta.android.tableview.library">
+    package="com.chargemap_beta.android.tableView.library">
 
     <application
         android:allowBackup="true"

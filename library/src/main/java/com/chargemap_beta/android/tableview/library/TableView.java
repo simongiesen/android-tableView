@@ -1,4 +1,4 @@
-package com.chargemap_beta.android.tableview.library;
+package com.chargemap_beta.android.tableView.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;

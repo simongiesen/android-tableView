@@ -1,10 +1,10 @@
-package com.chargemap_beta.android.tableview.sample;
+package com.chargemap_beta.android.tableView.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.chargemap_beta.android.tableview.library.Cell;
-import com.chargemap_beta.android.tableview.library.TableView;
+import com.chargemap_beta.android.tableView.library.Cell;
+import com.chargemap_beta.android.tableView.library.TableView;
 
 import java.util.ArrayList;
 import java.util.List;
